@@ -18,7 +18,7 @@ async def upload(req: web.Request):
 
     image = post_data.get('image')
 
-    if image is not None:
+    if image:
         image_bytes = image.file.read()
         mc_image_bytes = blockinator.generate(image_bytes, 1920, True)[1].tobytes()
 
