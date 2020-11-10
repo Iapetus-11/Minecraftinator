@@ -10,6 +10,16 @@ router = web.RouteTableDef()
 async def index(req: web.Request):
     return {'test': req.remote}
 
+@router.post('/upload')
+async def upload(req: web.Request):
+    post_data = await req.post()
+
+    image = post_data.get('image')
+
+    if image:
+        image_content = image.file.read()
+        print(image_content)
+
 async def init():
     app = web.Application()  # app instance
     app.add_routes(router)  # add routes

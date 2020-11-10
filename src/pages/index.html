@@ -7,6 +7,9 @@
 
   <body>
     <h1>Minecraftinator</h1>
-    <p>TEST: {{ test }}</p>
+
+    <form action='/upload' method='POST' enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/png, image/jpeg">
+    </form>
   </body>
 </html>
