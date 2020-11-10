@@ -14,7 +14,7 @@ async def init():
     app = web.Application()  # app instance
     app.add_routes(router)  # add routes
 
-    aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('./pages'))  # load templates/pages
+    aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('src/pages'))  # load templates/pages
 
     return app
 
