@@ -5,7 +5,7 @@ import json
 import cv2
 
 def im_from_bytes(bytes):
-    return cv2.imdecode(np.frombuffer(bytes, np.uint8), cv2.IMREAD_ANYCOLOR)
+    return cv2.imdecode(np.frombuffer(bytes, np.uint8), cv2.IMREAD_COLOR)
 
 def draw_image(canvas, img, x, y):
     canvas[y:y+img.shape[0], x:x+img.shape[1]] = img
