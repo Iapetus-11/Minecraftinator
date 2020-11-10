@@ -20,10 +20,10 @@ async def upload(req: web.Request):
 
     if image is not None:
         image_bytes = image.file.read()
-        mc_image_bytes = blockinator.generate(image_bytes, 1920, False)[1]
+        mc_image_bytes = blockinator.generate(image_bytes, 1920, True)[1].tobytes()
 
         print(type(mc_image_bytes))
-        
+
         return web.Response(body=mc_image_bytes, content_type='image/png', status=200)
 
     return web.Response(status=400)
