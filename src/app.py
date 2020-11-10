@@ -22,6 +22,7 @@ async def upload(req: web.Request):
         image_bytes = image.file.read()
 
         new_image_bytes = blockinator.generate(image_bytes, 1920, True)
+        print(type(new_image_bytes))
 
         cv2.imshow('image', blockinator.im_from_bytes(new_image_bytes))
         cv2.waitKey(0)
