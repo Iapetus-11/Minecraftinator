@@ -18,11 +18,12 @@ async def upload(req: web.Request):
 
     image = post_data.get('image')
 
-    if image:
+    if image is not None:
         image_bytes = image.file.read()
         mc_image_bytes = blockinator.generate(image_bytes, 1920, False)[1]
+        return web.Response(body=mc_image_bytes, content_type='image/png', status=200)
 
-        return web.Response(mc_image_bytes, content_type='image/png')
+    return web.Response(status=400)
 
 async def init():
     app = web.Application()  # app instance
