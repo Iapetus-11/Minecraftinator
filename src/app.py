@@ -8,7 +8,7 @@ router = web.RouteTableDef()
 @router.get('/')
 @aiohttp_jinja2.template('index.html')
 async def index(req: web.Request):
-    pass
+    return {'test': 'you are of the stupid'}
 
 async def init():
     app = web.Application()  # app instance
