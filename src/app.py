@@ -23,10 +23,6 @@ async def upload(req: web.Request):
 
         image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
 
-        cv2.imshow('image', image)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-
 async def init():
     app = web.Application()  # app instance
     app.add_routes(router)  # add routes
