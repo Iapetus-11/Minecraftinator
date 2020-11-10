@@ -1,6 +1,6 @@
 from aiohttp import web
 import aiohttp_jinja2
-import numpy as np
+import blockinator
 import asyncio
 import jinja2
 import cv2
@@ -21,7 +21,9 @@ async def upload(req: web.Request):
     if image:
         image_bytes = image.file.read()
 
-        image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
+        new_image_bytes = blockinator.generate(image_bytes, 1920, True)
+
+        cv2.imshow(new_image_bytes)
 
 async def init():
     app = web.Application()  # app instance
