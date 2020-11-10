@@ -27,7 +27,7 @@ async def upload(req: web.Request):
     return web.Response(status=400)
 
 async def init():
-    app = web.Application()  # app instance
+    app = web.Application(client_max_size=64*1024**2)  # app instance
     app.add_routes(router)  # add routes
 
     aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('src/pages'))  # load templates/pages
