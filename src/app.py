@@ -24,6 +24,8 @@ async def upload(req: web.Request):
         new_image_bytes = blockinator.generate(image_bytes, 1920, True)
 
         cv2.imshow('image', new_image_bytes)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 async def init():
     app = web.Application()  # app instance
