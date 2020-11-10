@@ -20,13 +20,9 @@ async def upload(req: web.Request):
 
     if image:
         image_bytes = image.file.read()
+        mc_image_bytes = blockinator.generate(image_bytes, 1920, False)[1]
 
-        new_image_bytes = blockinator.generate(image_bytes, 1920, False)[1]
-        print(type(new_image_bytes))
-
-        cv2.imshow('image', blockinator.im_from_bytes(new_image_bytes))
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        return web.Response(mc_image_bytes, content_type='image/png')
 
 async def init():
     app = web.Application()  # app instance
