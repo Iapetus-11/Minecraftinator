@@ -12,7 +12,7 @@ router = web.RouteTableDef()
 async def index(req: web.Request):
     return {'test': req.remote}
 
-@router.post('/upload')
+@router.post('/')
 async def upload(req: web.Request):
     post_data = await req.post()
 
