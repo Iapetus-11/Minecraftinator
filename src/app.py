@@ -1,7 +1,9 @@
 from aiohttp import web
 import aiohttp_jinja2
+import numpy as np
 import asyncio
 import jinja2
+import cv2
 
 router = web.RouteTableDef()
 
@@ -17,8 +19,13 @@ async def upload(req: web.Request):
     image = post_data.get('image')
 
     if image:
-        image_content = image.file.read()
-        print(image_content)
+        image_bytes = image.file.read()
+
+        image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
+
+        cv2.imshow('image', image)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 async def init():
     app = web.Application()  # app instance
