@@ -3,7 +3,6 @@ import aiohttp_jinja2
 import blockinator
 import asyncio
 import jinja2
-import cv2
 
 router = web.RouteTableDef()
 
